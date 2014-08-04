@@ -1,9 +1,16 @@
 Package: sfetch
 Type: Package
-Title: What the package does (short line)
-Version: 1.0
+Title: Fetches content from social media sites for analysis in R
+Version: 0.1
 Date: 2014-08-04
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Bud Gibson
+Maintainer: Bud Gibson <bud@budgibson.com>
+Description: Currently very early stages and only works with Google+ using
+    RCurl and rjson. Plan to rearchitect using httr and classes. May go with
+    jsonlite, but rjson is a good performer.
+Depends:
+    R (>= 3.0.0)
+Imports:
+    RCurl,
+    rjson
+License: MIT
