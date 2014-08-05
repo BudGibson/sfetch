@@ -12,5 +12,6 @@ Depends:
     R (>= 3.0.0)
 Imports:
     RCurl,
-    rjson
+    rjson,
+    httr
 License: MIT
