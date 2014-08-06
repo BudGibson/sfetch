@@ -24,7 +24,7 @@ posts_GET.gp <- function(gppo,
                   api_key)
     resp <- httr::GET(url = url, path = path)
     httr::stop_for_status(resp)
-    this.json <- rjson::fromJSON(httr::content(resp, as = "text"))
+    this.json <- jsonlite::fromJSON(httr::content(resp, as = "text"), simplifyVector = FALSE)
     posts <- c(posts, this.json[["items"]])
     if (is.null(this.json[["nextPageToken"]])) {
       gppo$SetPosts(posts)

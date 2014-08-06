@@ -13,8 +13,10 @@ Depends:
 Imports:
     RCurl,
     rjson,
-    httr
+    httr,
+    jsonlite
 License: MIT
 Collate:
+    'gplus_GET.R'
     'sfetch.R'
     'posts_GET.R'
