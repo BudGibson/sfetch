@@ -1,5 +1,5 @@
 #' @include sfetch.R
-#' @include splus_GET.R
+#' @include gplus_GET.R
 
 #' @export
 posts_GET <- function(gpobj, ...) UseMethod("posts_GET")
