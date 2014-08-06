@@ -38,6 +38,6 @@ fetch_posts <- function(gpobj, ...) UseMethod("fetch_posts")
 fetch_posts.gp <- fp_factory()
 
 gplus_key <- function() {
-  Sys.getenv('GITHUB_PAT')
+  Sys.getenv('GPLUS_KEY')
 }
 
