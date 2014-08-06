@@ -1,8 +1,10 @@
+#' @include sfetch.R
 #' @export
 posts_GET <- function(gpobj, ...) UseMethod("posts_GET")
 #' @export
 posts_GET.gp <- function(gppo,
                          total_fetches = 1,
+                         api_key = gplus_key(),
                          url = "https://www.googleapis.com",
                          path_start = "/plus/v1/people/",
                          path_end = "/activities/public") {
@@ -19,15 +21,16 @@ posts_GET.gp <- function(gppo,
                   "?maxResults=100",
                   pageToken,
                   "&key=",
-                  gppo$GetAPIKey())
+                  api_key)
     resp <- httr::GET(url = url, path = path)
-    this.res <- rjson::fromJSON(httr::content(resp, as = "text"))
-    posts <- c(posts, this.res[["items"]])
-    if (is.null(this.res[["nextPageToken"]])) {
+    httr::stop_for_status(resp)
+    this.json <- rjson::fromJSON(httr::content(resp, as = "text"))
+    posts <- c(posts, this.json[["items"]])
+    if (is.null(this.json[["nextPageToken"]])) {
       gppo$SetPosts(posts)
       return(invisible(gppo))
     } else {
-      pageToken <- paste0("&pageToken=", this.res[["nextPageToken"]])
+      pageToken <- paste0("&pageToken=", this.json[["nextPageToken"]])
     }      
   }
   gppo$SetPosts(posts)

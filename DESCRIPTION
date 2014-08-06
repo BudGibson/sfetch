@@ -15,3 +15,6 @@ Imports:
     rjson,
     httr
 License: MIT
+Collate:
+    'sfetch.R'
+    'posts_GET.R'
